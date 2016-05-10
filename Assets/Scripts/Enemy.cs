@@ -5,18 +5,21 @@ public class Enemy : MonoBehaviour {
 
 	//public variables
 	public Transform target;
-	public int health;
+	public int m_health;
+	public int m_score;
 	
 	//private variables
 
 	// Use this for initialization
-	void Start () {
-	
+	void Start () 
+	{
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		//run Movement script
+		Movement ();
 		//for other enemies, run their scripts (like ghost kamikaze, grunt melee, lobber ranged attack, etc)
 	}
 
