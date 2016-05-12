@@ -19,8 +19,9 @@ public class Enemy_Spawner : MonoBehaviour {
 
 	//private variables
 	private GameObject enemy_type;
-	Vector3[] surTiles;
+	public Vector3[] surTiles;
 	Vector3 spawn_location;
+	private bool spawning_enemies;
 
 	// Use this for initialization
 	void Awake() 
@@ -34,7 +35,7 @@ public class Enemy_Spawner : MonoBehaviour {
 			{
 				if(y == 0 && x == 0)
 					continue;
-				surTiles[index] = new Vector3(transform.position.x + x, 1.0f, transform.position.z + y);
+				surTiles[index] = new Vector3(transform.position.x + x, transform.position.y, transform.position.z + y);
 				index++;
 
 			}
@@ -76,20 +77,26 @@ public class Enemy_Spawner : MonoBehaviour {
 			}
 		}
 		//change skin of the spawner to match enemy's skin
-		Material enemy_color = enemy_type.GetComponent<Renderer>().material;
-		gameObject.GetComponent<Renderer> ().material = enemy_color;
+
+		Material enemy_color = enemy_type.GetComponent<Renderer>().sharedMaterial;
+		gameObject.GetComponent<Renderer>().material = enemy_color;
+		spawning_enemies = false;
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		StartCoroutine ("Spawning_Enemy");
+		if (spawning_enemies != true)
+			StartCoroutine ("Spawning_Enemy");
 	}
 
 	//coroutine that spawns enemies over certain period of time
 	IEnumerator Spawning_Enemy()
 	{
-		for (int enemy_count = 0; enemy_count < spawn_amount; enemy_count++) 
+		spawning_enemies = true;
+		Debug.Log("In spawning enemy couroutine");
+		yield return new WaitForSeconds(m_spawntime);
+		for(int enemy_count = 0; enemy_count < spawn_amount; enemy_count++) 
 		{
 			spawn_location = new Vector3(0.0f, 0.0f, 0.0f);
 			if(check_empty_nearby())
@@ -97,14 +104,16 @@ public class Enemy_Spawner : MonoBehaviour {
 				Spawn_enemy();
 			}
 		}
-		yield return new WaitForSeconds(m_spawntime * 1.0f * Time.deltaTime);
+		spawning_enemies = false;
+		yield break;
 	}
 
 	void Spawn_enemy()
 	{
 		//spawn an enemy with relative strength to the spawner's health
-		Debug.Log("Location: " + spawn_location.x + ", " + spawn_location.y + ", " + spawn_location.z);
-		Instantiate();
+		//Debug.Log("Location: " + spawn_location.x + ", " + spawn_location.y + ", " + spawn_location.z);
+		Instantiate(enemy_type, spawn_location, Quaternion.identity);
+		return;
 	}
 
 	//this will be the function that checks neighboring slots
@@ -112,18 +121,16 @@ public class Enemy_Spawner : MonoBehaviour {
 	bool check_empty_nearby()
 	{
 		//iterate through neighboring locations
-		foreach (Vector3 elem in surTiles) 
+		for (int index = 0; index < surTiles.Length; index++) 
 		{
-			Collider[] hitcolliders = Physics.OverlapSphere(elem, 1);
+			Vector3 elem = surTiles[index];
 			//if space is available return true
-			if(hitcolliders.Length > 0)
+			if(!(Physics.CheckSphere(elem, 0.25f)))
 			{
-				Debug.Log("Location empty: " + elem.x + ", " + elem.z);
-				spawn_location = elem;
+				//Debug.Log("Location empty: " + elem.x + ", " + elem.z);
+				spawn_location = elem + new Vector3(0f, 0.603f, 0f);
 				return true;
 			}
-			Debug.Log("Location colliding: " + elem.x + ", " + elem.y);
-			continue;
 		}
 		//return false
 		return false;
