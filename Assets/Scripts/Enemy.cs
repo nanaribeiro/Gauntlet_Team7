@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		cur_target = GameObject.Find ("Test_target").GetComponent<Transform>();
+		cur_target = GameObject.Find ("Player").GetComponent<Transform>();
 	}
 	
 	// Update is called once per frame
