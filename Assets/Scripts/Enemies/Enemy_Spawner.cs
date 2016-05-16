@@ -23,6 +23,11 @@ public class Enemy_Spawner : MonoBehaviour {
 	Vector3 spawn_location;
 	private bool spawning_enemies;
 
+
+	private Collider anObjCollider;
+	private Camera cam;//reference to camera to determine if this spawner is in view of camera
+	private Plane[] planes;
+
 	// Use this for initialization
 	void Awake() 
 	{
@@ -81,12 +86,17 @@ public class Enemy_Spawner : MonoBehaviour {
 		Material enemy_color = enemy_type.GetComponent<Renderer>().sharedMaterial;
 		gameObject.GetComponent<Renderer>().material = enemy_color;
 		spawning_enemies = false;
+
+		//variables that determine if spawner is within camera shot
+		cam = Camera.main;
+		planes = GeometryUtility.CalculateFrustumPlanes(cam);
+		anObjCollider = GetComponent<Collider>();
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		if (spawning_enemies != true)
+		if (spawning_enemies != true && GeometryUtility.TestPlanesAABB(planes, anObjCollider.bounds))
 			StartCoroutine ("Spawning_Enemy");
 	}
 
@@ -134,6 +144,13 @@ public class Enemy_Spawner : MonoBehaviour {
 		}
 		//return false
 		return false;
+	}
+
+	void On_destroy()
+	{
+		//increase player's score by score amount
+
+		//destroy this object
 	}
 
 }
