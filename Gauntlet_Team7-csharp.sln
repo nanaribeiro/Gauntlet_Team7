@@ -1,11 +1,7 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
-<<<<<<< HEAD
 Project("{112698ED-ED03-66B0-9C4E-EDD4BEEBBFA3}") = "Gauntlet_Team7", "Assembly-CSharp-vs.csproj", "{E3FD87C0-AB48-929D-3447-70232B316625}"
-=======
-Project("{9DD8FA96-2B5D-08E5-ED72-26CDEDAB244D}") = "Gauntlet_team7", "Assembly-CSharp-vs.csproj", "{A463C3F7-5C78-D6DB-2EA0-82A9C4650F3A}"
->>>>>>> upstream/master
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,25 +9,17 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-<<<<<<< HEAD
 		{E3FD87C0-AB48-929D-3447-70232B316625}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E3FD87C0-AB48-929D-3447-70232B316625}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3FD87C0-AB48-929D-3447-70232B316625}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3FD87C0-AB48-929D-3447-70232B316625}.Release|Any CPU.Build.0 = Release|Any CPU
-=======
-		{A463C3F7-5C78-D6DB-2EA0-82A9C4650F3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A463C3F7-5C78-D6DB-2EA0-82A9C4650F3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A463C3F7-5C78-D6DB-2EA0-82A9C4650F3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A463C3F7-5C78-D6DB-2EA0-82A9C4650F3A}.Release|Any CPU.Build.0 = Release|Any CPU
->>>>>>> upstream/master
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-<<<<<<< HEAD
-										GlobalSection(MonoDevelopProperties) = preSolution
+														GlobalSection(MonoDevelopProperties) = preSolution
 =======
-							GlobalSection(MonoDevelopProperties) = preSolution
+						GlobalSection(MonoDevelopProperties) = preSolution
 >>>>>>> upstream/master
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
