@@ -56,7 +56,11 @@
      <Compile Include="Assets\Scripts\Enemies\Thief.cs" />
      <Compile Include="Assets\Scripts\Items\Pickup.cs" />
      <Compile Include="Assets\Scripts\Items\Unlockable_door.cs" />
-     <Compile Include="Assets\Scripts\Player.cs" />
+     <Compile Include="Assets\Scripts\Players\Elf.cs" />
+     <Compile Include="Assets\Scripts\Players\Player.cs" />
+     <Compile Include="Assets\Scripts\Players\Valkirye.cs" />
+     <Compile Include="Assets\Scripts\Players\Warrior.cs" />
+     <Compile Include="Assets\Scripts\Players\Wizard.cs" />
      <Compile Include="Assets\Scripts\Projectiles\Enemy_projectile.cs" />
      <Compile Include="Assets\Scripts\Projectiles\Player_projectile.cs" />
      <Compile Include="Assets\Scripts\Projectiles\Projectile.cs" />
