@@ -2,6 +2,8 @@
 using System.Collections;
 
 
+//script by Colby
+
 //basically the same as the Enemy base class but waits to attack again
 public class Lobber : Enemy
 {

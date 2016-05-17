@@ -1,17 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Unlockable_door : MonoBehaviour {
+//script by Colby
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+public class Unlockable_door : MonoBehaviour {
 
 	void OnCollisionStay(Collision other)
 	{
@@ -19,8 +11,13 @@ public class Unlockable_door : MonoBehaviour {
 		if (other.gameObject.tag == "Player") 
 		{
 			//check to see if the player has a key to open the door
+			if(other.gameObject.GetComponent<Player>().key > 0)
+			{
 				//destroy this object
+				Destroy(gameObject);
 				//decrease player's keys by 1
+				other.gameObject.GetComponent<Player>().key -= 1;
+			}
 		}
 	}
 }

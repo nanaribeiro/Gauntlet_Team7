@@ -10,10 +10,12 @@ public class Player : MonoBehaviour {
 	public GameObject shot;
 	public Transform shotSpawn;
 	public float moveSpeed = 2.5f;
+
 	public int health;
 	public int score;
 	public int damage;
 	public int potion;
+	public int key;
 
 	protected void Movement () {
 		horizontal = Input.GetAxis ("Horizontal");

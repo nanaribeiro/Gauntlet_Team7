@@ -2,6 +2,8 @@
 using System.Collections;
 
 
+//script by Colby
+
 //basically the same as the Enemy base class but waits to attack again
 public class Sorcerer : Enemy
 {
@@ -41,6 +43,7 @@ public class Sorcerer : Enemy
 		//else if player projectile and check if dead
 		if (other.gameObject.tag == "Player") 
 		{
+			player_target = other.gameObject.GetComponent<Player> ();
 			if(!m_made_contact && !m_hidden)
 				StartCoroutine ("Attacking");
 			if (m_attacks_committed == max_attacks && !m_hidden) 
@@ -54,10 +57,9 @@ public class Sorcerer : Enemy
 	IEnumerator Attacking()
 	{
 		m_made_contact = true;
-		//get_reference to player behaviours via GetComponent<>(PLAYER_SCRIPT);
 
 		//decrease other players health(player.change_health(-m_damage))
-		Debug.Log("Hit player with " + m_damage + " damage.");
+		player_target.health -= m_damage;
 
 		//count the number of attacks dealt
 		m_attacks_committed++;

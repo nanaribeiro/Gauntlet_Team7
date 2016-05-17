@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour {
 	public int m_health = 1;
 	public int m_score = 10;
 	public float m_speed = 2;
-	public float m_damage = 10;
+	public int m_damage = 10;
 	
 	//private variables
 	protected Collider anObjCollider;
@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour {
 	protected Plane[] planes;
 
 	private bool m_movable;
+	protected Player player_target;
 
 
 	// Use this for initialization
@@ -65,7 +66,6 @@ public class Enemy : MonoBehaviour {
 		float step = m_speed * Time.deltaTime;
 		transform.LookAt (cur_target);
 
-		transform.position = Vector3.MoveTowards (transform.position, cur_target.position, step); 
 		transform.position = Vector3.MoveTowards (transform.position, cur_target.position, step); 
 		yield return new WaitForSeconds (1.0f);
 		m_movable = true;
