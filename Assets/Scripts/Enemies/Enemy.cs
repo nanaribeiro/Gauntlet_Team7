@@ -15,9 +15,13 @@ public class Enemy : MonoBehaviour {
 	protected Camera cam;//reference to camera to determine if this enemy is in the view of camera
 	protected Plane[] planes;
 
+	private bool m_movable;
+
+
 	// Use this for initialization
 	protected virtual void Start () 
 	{
+		m_movable = true;
 		cur_target = GameObject.FindWithTag ("Player").GetComponent<Transform>();
 		cam = Camera.main;
 		planes = GeometryUtility.CalculateFrustumPlanes(cam);
@@ -29,7 +33,7 @@ public class Enemy : MonoBehaviour {
 		//if the enemy is within camera shot, move the enemy
 		if (GeometryUtility.TestPlanesAABB(planes, anObjCollider.bounds)) {
 			//run Movement script
-			Movement ();
+			Movement();
 		//for other enemies, run their scripts (like ghost kamikaze, grunt melee, lobber ranged attack, etc)
 		}
 		else 
@@ -42,25 +46,36 @@ public class Enemy : MonoBehaviour {
 	//want the enemies movment to be grid like
 	protected virtual void Movement()
 	{
-			Transform target = cur_target;
-			//if player closest is not target player
-			if (target != cur_target) {
-				//change closest to the target player
-				cur_target = target;
-			}
-			//if the tile the enemy wants to move in is available
-			//and they are not in the middle of a move coroutine
-			float step = m_speed * Time.deltaTime;
-			transform.LookAt (cur_target);
-			transform.position = Vector3.MoveTowards (transform.position, cur_target.position, step); 
+		if(m_movable)
+			StartCoroutine ("move_towards");
+	}
+
+	IEnumerator move_towards()
+	{	
+		m_movable = false;
+
+		Transform target = cur_target;
+		//if player closest is not target player
+		if (target != cur_target) {
+			//change closest to the target player
+			cur_target = target;
+		}
+		//if the tile the enemy wants to move in is available
+		//and they are not in the middle of a move coroutine
+		float step = m_speed * Time.deltaTime;
+		transform.LookAt (cur_target);
+
+		transform.position = Vector3.MoveTowards (transform.position, cur_target.position, step); 
+		transform.position = Vector3.MoveTowards (transform.position, cur_target.position, step); 
+		yield return new WaitForSeconds (1.0f);
+		m_movable = true;
 	}
 
 	//takes another game object that collided with it(ie. player bullet) and calculates this enemy's current health
 	//returns true if some health remains, false if there is no longer any health
-	public bool check_health(GameObject other)
+	public bool check_health(int damage)
 	{
-		//need projectile script completeted
-
+		m_health -= damage;
 		//after math is completed, check if m_health is alright
 		if (m_health > 0)
 			return true;
