@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\Enemies\Lobber.cs" />
      <Compile Include="Assets\Scripts\Enemies\Sorcerer.cs" />
      <Compile Include="Assets\Scripts\Enemies\Thief.cs" />
+     <Compile Include="Assets\Scripts\Exit.cs" />
      <Compile Include="Assets\Scripts\FollowPlayer.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\Items\Pickup.cs" />
