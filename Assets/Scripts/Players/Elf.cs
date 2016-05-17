@@ -12,5 +12,6 @@ public class Elf : Player {
 	void Update () {
 		//Call function for basic movement
 		Movement ();
+		attack ();
 	}
 }
