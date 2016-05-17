@@ -16,12 +16,13 @@ public class Player : MonoBehaviour {
 	public float maxY = 5.41f;*/
 
 	protected void Movement () {
-		horizontal = Input.GetAxis ("Horizontal") * moveSpeed * Time.deltaTime;
-		vertical = Input.GetAxis ("Vertical") * moveSpeed * Time.deltaTime;
-		pos = transform.position;
-		pos.x = pos.x + horizontal;
-		pos.z = pos.z + vertical;
-		transform.position = pos;
+		horizontal = Input.GetAxis ("Horizontal");
+		vertical = Input.GetAxis ("Vertical");
+		pos = new Vector3 (horizontal, 0f, vertical);
+		if (horizontal != 0 || vertical != 0) {
+			transform.rotation = Quaternion.LookRotation (pos);
+		}
+		transform.Translate(pos * moveSpeed * Time.deltaTime, Space.World);
 	}
 	protected void attack(){
 		if (Input.GetButton ("Fire1") && Time.time > newFire) {
