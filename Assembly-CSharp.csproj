@@ -61,6 +61,7 @@
      <Compile Include="Assets\Scripts\Players\Valkirye.cs" />
      <Compile Include="Assets\Scripts\Players\Warrior.cs" />
      <Compile Include="Assets\Scripts\Players\Wizard.cs" />
+     <Compile Include="Assets\Scripts\Players\mover.cs" />
      <Compile Include="Assets\Scripts\Projectiles\Enemy_projectile.cs" />
      <Compile Include="Assets\Scripts\Projectiles\Player_projectile.cs" />
      <Compile Include="Assets\Scripts\Projectiles\Projectile.cs" />

@@ -11,5 +11,6 @@ public class Wizard : Player {
 	// Update is called once per frame
 	void Update () {
 		Movement ();
+		attack ();
 	}
 }

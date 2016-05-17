@@ -11,5 +11,6 @@ public class Valkirye : Player {
 	// Update is called once per frame
 	void Update () {
 		Movement ();
+		attack ();
 	}
 }
