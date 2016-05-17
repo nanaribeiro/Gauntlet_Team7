@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour {
 	// Use this for initialization
 	protected virtual void Start () 
 	{
-		cur_target = GameObject.Find ("Player").GetComponent<Transform>();
+		cur_target = GameObject.FindWithTag ("Player").GetComponent<Transform>();
 		cam = Camera.main;
 		planes = GeometryUtility.CalculateFrustumPlanes(cam);
 		anObjCollider = GetComponent<Collider>();
