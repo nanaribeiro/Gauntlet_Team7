@@ -16,7 +16,7 @@ public class Player_projectile : Projectile
 		if (other.gameObject.tag == "Enemy") 
 		{
 			Enemy temp = other.gameObject.GetComponent<Enemy> ();
-			if (!temp.check_health (gameObject)) 
+			if (!temp.check_health (m_damage)) 
 			{
 				//increase player's score that launched the projectile(player.Change_Score(+m_score))
 				//destroy other object

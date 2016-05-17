@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench />
+=======
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Players\Player.cs">
@@ -14,6 +19,7 @@
       <File FileName="Assets\Scripts\Players\mover.cs" Line="12" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
+>>>>>>> b50b206b302ea4c6cdc74765cfb45dfa8ac9effc
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
