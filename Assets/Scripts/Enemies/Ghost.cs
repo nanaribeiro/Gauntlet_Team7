@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//Script by Colby
 
 //basically the same as the Enemy base class, except for how it handles collisions
 public class Ghost : Enemy
@@ -19,9 +20,9 @@ public class Ghost : Enemy
 		//if the collision was with another player
 		//else if player projectile and check if dead
 		if (other.gameObject.tag == "Player") {
-			//get_reference to player behaviours via GetComponent<>(PLAYER_SCRIPT);
 
 			//decrease other players health(player.change_health(-m_damage))
+			other.gameObject.GetComponent<Player>().health -= m_damage;
 
 			//destroy this object
 			DestroyObject(gameObject);

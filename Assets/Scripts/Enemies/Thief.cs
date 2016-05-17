@@ -2,6 +2,8 @@
 using System.Collections;
 
 
+//script by Colby
+
 //basically the same as the Enemy base class but waits to attack again
 public class Thief : Enemy
 {
@@ -26,6 +28,7 @@ public class Thief : Enemy
 		//else if player projectile and check if dead
 		if (other.gameObject.tag == "Player") 
 		{
+			player_target = other.gameObject.GetComponent<Player>();
 			if(!m_made_contact)
 				StartCoroutine ("Robbing");
 		} 
@@ -35,13 +38,12 @@ public class Thief : Enemy
 	IEnumerator Robbing()
 	{
 		m_made_contact = true;
-		//get_reference to player behaviours via GetComponent<>(PLAYER_SCRIPT);
-
 		//decrease other players health(player.change_health(-m_damage))
-		Debug.Log("Hit player with " + m_damage + " damage.");
+		player_target.health -= m_damage;
 
 		//decrease other players score and increase this enemy's score for the damage it does
-		Debug.Log("Hit player robbed of " + m_damage + ".");
+		player_target.score -= m_damage;
+		m_score += m_damage;
 
 		yield return new WaitForSeconds(m_time_to_attack);
 		m_made_contact = false;

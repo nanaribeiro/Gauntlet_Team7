@@ -30,6 +30,7 @@ public class Enemy_projectile : Projectile
 		if (other.gameObject.tag == "Player") 
 		{
 			//deal damage to player via health altercation script
+			other.gameObject.GetComponent<Player>().health -= m_damage;
 		}
 
 		//destroy object if it collides with anything other than an enemy
